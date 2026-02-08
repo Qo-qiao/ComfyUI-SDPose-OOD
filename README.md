@@ -4,7 +4,17 @@
 
 # SDPose-OOD for ComfyUI
 
+## Changelog
 
+### 2026-02-01
+- **New**: Added `style` parameter support for pose visualization functions
+  - `"sdpose"` (original style): thinner lines and dots with full color intensity
+  - `"controlnet_aux"` style: thicker lines and dots with softer colors (60% intensity)
+- **Enhanced**: Improved type conversion and error handling in tensor/image conversion functions
+- **New**: Added `validate_openpose_black_image` function to validate OpenPose standard compliance
+- **Fixed**: Variable name case consistency (e.g., `SDPOSE_MODEL_DIR`)
+- **Enhanced**: Canvas validation to enforce OpenPose standards (3-channel uint8 pure black background)
+- **Optimized**: Hand and face drawing with different line thicknesses and dot radii based on selected style
 
 ## Introduction
 
@@ -54,19 +64,6 @@ It brings the powerful and robust pose estimation capabilities of SDPose-OOD int
 
 &nbsp;   * `pip install -r requirements.txt`
 
-* For `groundingdino-py`, you need to set the environment variable before installation:
-        - On Windows:
-          ```
-          set PYTHONUTF8=1
-          ```
-        - On Linux:
-          ```
-          export PYTHONUTF8=1
-          ```
-      Then install groundingdino-py:
-      ```
-      pip install groundingdino-py
-      ```
 
 
 2.  **Install Models (Automatic or Manual)**:

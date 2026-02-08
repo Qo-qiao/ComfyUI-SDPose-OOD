@@ -2,6 +2,18 @@
 
 # SDPose-OOD for ComfyUI
 
+## 更新日志
+
+### 2026-02-01
+- **新增**: 姿态可视化函数添加 `style` 参数支持
+  - `"sdpose"`（原始风格）：较细的线条和圆点，颜色强度为100%
+  - `"controlnet_aux"` 风格：较粗的线条和圆点，颜色更柔和（60%强度）
+- **增强**: 改进了张量/图像转换函数中的类型转换和错误处理
+- **新增**: 添加 `validate_openpose_black_image` 函数用于验证OpenPose标准合规性
+- **修复**: 统一变量名大小写（如 `SDPOSE_MODEL_DIR`）
+- **增强**: 画布验证以强制符合OpenPose标准（3通道uint8纯黑背景）
+- **优化**: 根据所选风格优化手部和面部绘制，使用不同的线条粗细和圆点半径
+
 ## 简介
 
 本项目是 [SDPose-OOD](https://github.com/T-S-Liang/SDPose-OOD) 项目的 ComfyUI 自定义节点实现。
@@ -26,19 +38,6 @@
     * 通过 `git clone` 将此仓库克隆到你的 `ComfyUI/custom_nodes/` 目录下。
     * `cd ComfyUI/custom_nodes/SDPose-OOD-ComfyUI`
     * `pip install -r requirements.txt`
-    * 对于 `groundingdino-py`，需要在安装前设置环境变量：
-        - Windows 系统：
-          ```
-          set PYTHONUTF8=1
-          ```
-        - Linux 系统：
-          ```
-          export PYTHONUTF8=1
-          ```
-      然后安装 groundingdino-py：
-      ```
-      pip install groundingdino-py
-      ```
 
 2.  **安装模型 (自动或手动)**:
     * **自动 (推荐)**: 节点（`Load SDPose Model`, `Load YOLO Model`）在首次运行时会自动从 Hugging Face 和 Github 下载模型，并将其放置在正确的目录中。
